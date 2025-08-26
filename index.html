@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+
+<html lang="es">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Para Mi Amor</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Cinzel:wght@400;700&family=Dancing+Script&display=swap" rel="stylesheet">
+
+<style>
+
+body {
+
+    margin: 0;
+
+    font-family: 'Cinzel', serif;
+
+    background: radial-gradient(circle at center, #0b0c10, #1f2833, #000);
+
+    color: #fff;
+
+    overflow-x: hidden;
+
+    text-align: center;
+
+    position: relative;
+
+}
+
+/* Estrellas */
+
+.stars {position: absolute;width: 100%;height: 100%;z-index: 0;}
+
+.star {position: absolute;border-radius: 50%;background: white;opacity: 0.8;animation: twinkle 2s infinite alternate;}
+
+@keyframes twinkle {0%{opacity:0.2;}50%{opacity:1;}100%{opacity:0.2;}}
+
+/* Nebulosas */
+
+.nebula {position: absolute;width:300px;height:300px;border-radius:50%;filter: blur(100px);opacity:0.3;z-index:0;}
+
+.nebula.blue {background:#3a5fcd;top:20%;left:10%;}
+
+.nebula.purple {background:#8a2be2;top:50%;left:70%;}
+
+h1 {position: relative; z-index:1; font-family:'Pacifico', cursive; font-size:3em; margin-top:20px;}
+
+.content {position: relative; z-index:1; margin:20px;}
+
+.message {max-width:500px;margin:20px auto 30px auto;font-family:'Dancing Script',cursive;font-size:1em;line-height:1.6em;text-align:center;color:#ffffff;}
+
+/* Foto especial */
+
+.photo-special-container {position: relative; display:inline-block; margin:40px auto; z-index:1;}
+
+.photo-special {width:300px;height:300px;object-fit:cover;border-radius:15px;border:3px solid #fff;box-shadow:0 0 20px rgba(255,255,255,0.5);}
+
+/* Mensajitos flotantes */
+
+.note {position:absolute;color:#fff;font-family:'Dancing Script',cursive;font-size:0.9em;opacity:0.6;pointer-events:none;user-select:none;animation: floatNotes 5s ease-in-out infinite;}
+
+@keyframes floatNotes {0%,100%{transform:translateY(0px);}50%{transform:translateY(-8px);}}
+
+/* Música */
+
+.music-container {display:flex; justify-content:center; gap:40px; margin:50px 0; flex-wrap:wrap; position: relative; z-index:1;}
+
+.music-box {width:250px; background:rgba(255,255,255,0.05); border:2px solid rgba(255,255,255,0.3); border-radius:15px; padding:10px; display:flex; flex-direction:column; align-items:center; backdrop-filter:blur(10px);}
+
+.music-box img {width:100%; border-radius:10px; cursor:pointer;}
+
+.song-label {width:100%; text-align:center; font-size:0.9em; padding:5px 0; color:#fff; margin-top:5px;}
+
+/* Foto extra en corazón con brillitos */
+
+.extra-photo {margin:50px 0; position:relative;}
+
+.heart-wrapper {position: relative; display: inline-block; margin: 0 auto;}
+
+.heart-wrapper img {width:250px; height:250px; object-fit:cover; display:block; margin:0 auto; clip-path: polygon(50% 0%,61% 14%,75% 14%,87% 27%,87% 41%,50% 100%,13% 41%,13% 27%,25% 14%,39% 14%); border-radius:25%; filter:brightness(0.85); border:3px solid #fff; box-shadow:0 0 20px rgba(255,255,255,0.5);}
+
+.sparkles {position:absolute; top:-20px; left:50%; transform:translateX(-50%); font-size:1.5em; color:#fff; opacity:0.8; pointer-events:none; animation: sparkleAnim 2s infinite alternate;}
+
+.sparkles span {display:inline-block; margin:0 2px;}
+
+@keyframes sparkleAnim {0%{transform:translateX(-50%) translateY(0px) scale(1);}50%{transform:translateX(-50%) translateY(-8px) scale(1.2);}100%{transform:translateX(-50%) translateY(0px) scale(1);}}
+
+/* Popup mensaje foto extra */
+
+#popupMessage {display:none; position:fixed; top:50%; left:50%; transform:translate(-50%,-50%); background: rgba(0,0,0,0.9); color:#fff; padding:20px 30px; border-radius:15px; z-index:100; text-align:center; box-shadow:0 0 20px rgba(255,255,255,0.5);}
+
+#popupMessage p {margin:0; line-height:1.5em; font-family:'Dancing Script',cursive;font-size:1em;}
+
+#popupMessage button {margin-top:15px; padding:8px 15px; border:none; border-radius:10px; background:#ffffff; color:#1f2833; cursor:pointer; font-family:'Dancing Script',cursive; font-size:1em;}
+
+#popupMessage button:hover {background:#f0f0f0;}
+
+/* Alexei final */
+
+.moon-section {margin:50px 0 20px 0; font-size:2em; font-family:'Dancing Script',cursive; font-style:italic; text-align:center; position:relative; z-index:1;}
+
+.moon-section small {display:block; font-size:0.7em; margin-top:5px; font-style:italic; color:#fff;}
+
+.moon-section::before {content:"🌙✨"; display:block; font-size:3em; margin-bottom:10px;}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="stars" id="stars"></div>
+
+<div class="nebula blue"></div>
+
+<div class="nebula purple"></div>
+
+<div class="content">
+
+<h1>For My Love</h1>
+
+<div class="message">
+
+Este es un detallito que hago para ti mi bonito por todo este tiempo que hemos estado juntos y me alegra que seas el amor de mi vida. Estoy muy feliz a tu lado, no te voy a abandonar ni lastimar porque es lo que menos quiero. Te amo mucho, y me siento feliz de ser tu esposa, con todo mi corazón, tu pequeñita Soo
+
+</div>
+
+<!-- Foto especial con mensajitos flotantes -->
+
+<div class="photo-special-container">
+
+<img src="https://i.pinimg.com/736x/92/7b/6d/927b6d0d7ec9f0ef59af7eb290f6db3b.jpg" alt="Foto Especial" class="photo-special">
+
+<span class="note" style="top:10%; left:5%;">mi chiquito</span>
+
+<span class="note" style="top:20%; left:80%;">mi bonito</span>
+
+<span class="note" style="top:50%; left:10%;">mi bebé</span>
+
+<span class="note" style="top:60%; left:75%;">mi chico olor a manguito</span>
+
+<span class="note" style="top:70%; left:40%;">precioso</span>
+
+<span class="note" style="top:85%; left:20%;">mi esposito</span>
+
+<span class="note" style="top:30%; left:50%;">XEWI</span>
+
+<span class="note" style="top:40%; left:30%;">amor de mi vida</span>
+
+<span class="note" style="top:15%; left:60%;">corazón</span>
+
+</div>
+
+<!-- Música -->
+
+<div class="music-container">
+
+<!-- Primera canción: solo portada con enlace a YouTube -->
+
+<div class="music-box">
+
+<a href="https://youtu.be/PWqEPKduGm8?si=O5Z-uRA2v92C7T6G" target="_blank">
+
+<img src="https://img.youtube.com/vi/PWqEPKduGm8/hqdefault.jpg" alt="Canción 1">
+
+</a>
+
+<div class="song-label">">ೃMy love</div>
+
+</div>
+
+<!-- Segunda canción: reproducción en la página -->
+
+<div class="music-box">
+
+<iframe width="250" height="140" src="https://www.youtube.com/embed/sElE_BfQ67s?rel=0&autoplay=0" title="Canción 2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<div class="song-label">0:58 ━━❍─────── 3:35 For you</div>
+
+</div>
+
+</div>
+
+<!-- Foto extra con popup y brillitos -->
+
+<div class="extra-photo">
+
+<div class="heart-wrapper">
+
+<img src="https://i.pinimg.com/1200x/3b/49/fe/3b49fe6f11ae48a6aa1f574900f7634e.jpg" id="extraPhoto">
+
+<div class="sparkles">
+
+<span>⋆</span><span>☄</span><span>⋆</span><span>☄</span><span>⋆</span>
+
+</div>
+
+</div>
+
+</div>
+
+<div id="popupMessage">
+
+<p>Eres mi lunita, la que alumbra mis noches, me encantan tus ojitos, tus labios, todo de ti, me gusta como eres, tal cual, te amo mucho.</p>
+
+<button id="closePopup">Cerrar</button>
+
+</div>
+
+<!-- Mensaje final -->
+
+<div class="moon-section">
+
+Alexei
+
+<small>te amo mi chiquito</small>
+
+</div>
+
+<script>
+
+// Estrellas
+
+const starsContainer = document.getElementById('stars');
+
+for(let i=0;i<100;i++){
+
+  const star = document.createElement('div');
+
+  star.classList.add('star');
+
+  star.style.top = Math.random()*100+'%';
+
+  star.style.left = Math.random()*100+'%';
+
+  star.style.width = Math.random()*2+1+'px';
+
+  star.style.height = star.style.width;
+
+  star.style.opacity = Math.random()*0.8+0.2;
+
+  starsContainer.appendChild(star);
+
+}
+
+// Popup foto extra
+
+const extraPhoto = document.getElementById('extraPhoto');
+
+const popup = document.getElementById('popupMessage');
+
+const closeBtn = document.getElementById('closePopup');
+
+extraPhoto.addEventListener('click', ()=>{popup.style.display='block';});
+
+closeBtn.addEventListener('click', ()=>{popup.style.display='none';});
+
+</script>
+
+</body>
+
+</html>
